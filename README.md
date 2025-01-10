@@ -53,9 +53,6 @@ Lambda Integration
     "timeoutInMillis": 29000
 }
 
-Copy
-
-Insert at cursor
 json
 Connects to an AWS Lambda function
 
@@ -148,9 +145,7 @@ How It Works (like a post office with different delivery methods):
     "phone_number": "+1234567890"
 }
 
-Copy
 
-Insert at cursor
 json
 When this request arrives:
 
