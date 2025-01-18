@@ -1,0 +1,40 @@
+openapi: 3.0.1
+info:
+  title: NotificationAPI
+  version: '1.0'
+paths:
+  /notify:
+    post:
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: 400 response
+        '500':
+          description: 500 response
+      security:
+        - api_key: []
+      x-amazon-apigateway-integration:
+        type: AWS_PROXY
+        httpMethod: POST
+        uri: arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${lambda_arn}/invocations
+        passthroughBehavior: when_no_match
+        timeoutInMillis: 29000
+components:
+  schemas:
+    NotificationResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        messageId:
+          type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
